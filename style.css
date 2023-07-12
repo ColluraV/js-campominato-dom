@@ -1,0 +1,27 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+.quadrato{
+    aspect-ratio: 1/1;
+    height: auto;
+    display: flex;
+    border: 1px black solid;
+    align-items: center;
+    justify-content: center;
+
+}
+
+
+
+body{
+    min-width: 550px;
+    background-image:url(https://cdn.vectorstock.com/i/1000x1000/10/64/explosion-background-vector-591064.webp);
+}
+
+#field{
+    max-width: 900px;
+}
