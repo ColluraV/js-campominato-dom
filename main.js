@@ -8,7 +8,10 @@ const fieldContainer = document.querySelector("[id=field-container]");
 let giocabile= true;
 let numEsplosivi=[];
 let contatore = 0;
-//selezione difficoltà
+
+
+//selezione difficoltà e avvio
+
 btnConferma.addEventListener("click",function(){
     giocabile = true;
     contatore = 0;
@@ -88,7 +91,7 @@ function casellaClick(){
         console.log(scelta)
     
     for(let i= 1; i <= numEsplosivi.length;i++){
-
+//confronto caselle con numeri esplosivi generawti random
         if(numEsplosivi[i] == scelta){
             console.log("ouch")
             console.log(numEsplosivi[i]);
@@ -104,8 +107,6 @@ function casellaClick(){
             console.log("bene");
             this.classList.add("bg-success");
             this.innerHTML = `<i class="fa-solid fa-dragon fs-2"></i>`;
-           
-
 
         }
     }
@@ -116,7 +117,7 @@ function casellaClick(){
 /**
  * @param {number} maxVal 
  */
-  function randomNumber(maxVal) {   /*da verificare che prenda il valore numerico di maxVal*/
+  function randomNumber(maxVal) { 
     let numbers=[];     
     while (numbers.length < 16){
         const random = Math.floor(Math.random() * maxVal) + 1;
