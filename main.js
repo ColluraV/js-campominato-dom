@@ -1,14 +1,19 @@
 `use strict`
 
 
+const hiddenLayer = document.querySelector(".invisiblelayer");
+const titoloRisultato = document.querySelector(".risultato");
 const btnConferma = document.querySelector(".conferma");
 const fieldContainer = document.querySelector("[id=field-container]");
+let giocabile= true;
 let numEsplosivi=[];
-
+let contatore = 0;
 //selezione difficoltà
 btnConferma.addEventListener("click",function(){
-   fieldContainer.innerHTML="";
-   
+    giocabile = true;
+    contatore = 0;
+    fieldContainer.innerHTML="";
+    hiddenLayer.classList.add("hidden")
     let totblocchi = 0;
 
     const lvlSelect = document.querySelector("#difficolta").value;
@@ -28,8 +33,6 @@ btnConferma.addEventListener("click",function(){
     numEsplosivi = randomNumber(totblocchi);
     
     fieldGen (totblocchi)
-
-    
 
 })
 
@@ -66,41 +69,47 @@ function fieldGen (numBlocchi) {
     for (let i = 0; i < numBlocchi; i++) {
 
       const blocco = blockGen(numBlocchi);
-
       blocco.dataset.numero = i+1;
-
       campo.push(blocco);
     }
   
     return campo;
   }
 
-
 //dichiarazione caselle
 
 function casellaClick(){
+            contatore += 1;
+    if (giocabile == false ){
+        return
+    } 
     const scelta=( this.dataset.numero)
 
         console.log(scelta)
     
     for(let i= 1; i <= numEsplosivi.length;i++){
- 
 
         if(numEsplosivi[i] == scelta){
             console.log("ouch")
             console.log(numEsplosivi[i]);
             this.classList.add("bg-danger");
             this.innerHTML = `<i class="fa-solid fa-biohazard fs-1"></i>`
+            giocabile = false;
+            hiddenLayer.classList.remove("hidden")
+            titoloRisultato.innerHTML =("Sei Morto dopo solo " + contatore +" pippate, che delusione");
+
             return
         }
         else{ 
             console.log("bene");
             this.classList.add("bg-success");
             this.innerHTML = `<i class="fa-solid fa-dragon fs-2"></i>`;
+           
+
+
         }
     }
 }
-
 
 
 //generazione numero random

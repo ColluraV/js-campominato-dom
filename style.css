@@ -13,16 +13,45 @@
     width: 8px;
     justify-content: center;
     align-items: center;
-
 }
 
 
-
+#principal_row{
+    position: relative;
+}
 body{
     min-width: 550px;
-    background-image:url(https://cdn.vectorstock.com/i/1000x1000/10/64/explosion-background-vector-591064.webp);
+    background-image:url(https://cdn.dribbble.com/users/1326994/screenshots/17023257/media/d9a6403d1589568f6c3fb850d4610780.jpg?compress=1&resize=1000x750&vertical=center);
 }
 
 #field{
     max-width: 900px;
+}
+.invisiblelayer{
+    position: relative;
+
+}
+
+.relative img{
+    width: 420px;
+}
+
+.risultato{
+    position: absolute;
+    top: 20%;
+    width: 158px;
+    left:15%;
+ }
+
+.hidden{
+    display: none;
+}
+.absolute{
+    position: absolute;
+    top : 520px;
+    left: 51.3%; ;
+    transform: translate(-50%, -50%);
+}
+.relative{
+    position: relative;
 }
