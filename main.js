@@ -26,19 +26,10 @@ btnConferma.addEventListener("click",function(){
 
     randomNumber(totblocchi);
 
-    const campoPieno = fieldGen (totblocchi);
-
-
-
-    for (let i = 0; i<campoPieno.length; i++){
-        fieldContainer.append(campoPieno[i]);
-        div.addEventListener ("click", casellaClick);
-
-    }
-
+    fieldGen (totblocchi)
 
     
-    console.log(campoPieno);
+
 })
 
 
@@ -48,21 +39,20 @@ btnConferma.addEventListener("click",function(){
 
 /**
  * 
- * @param {*} totBlocchi 
+ * @param {number} totBlocchi 
  * @param {number} numBlocchi 
- * @returns 
+
  */
-function blockGen (contenuto, numBlocchi){
+function blockGen (totBlocchi){
     const div = document.createElement("div");
-    const blocchiPerRiga = Math.sqrt(numBlocchi);
+    const blocchiPerRiga = Math.sqrt(totBlocchi);
     div.classList.add("quadrato");
     div.style.flexBasis =`calc( 100% / ${blocchiPerRiga})`
     console.log(blocchiPerRiga);
 
-    //inserimento testo interno al div da sostituire con ciò che più aggrada
-    div.innerHTML= contenuto;
-
-    return div;
+ 
+    
+    fieldContainer.append(div);
 }
 
 
@@ -70,23 +60,25 @@ function blockGen (contenuto, numBlocchi){
 
 function fieldGen (numBlocchi) {
     const campo = [];
-  
-    for (let i = 0; i < numBlocchi; i++) {
-      
-      const blocco = blockGen("blocco " + (i+1) , numBlocchi);
-  
-      campo.push(blocco);
 
+    for (let i = 0; i < numBlocchi; i++) {
+
+      const blocco = blockGen(numBlocchi);
+
+      blocco.dataset.numero = i.toString;
+      /*campo.addEventListener("click", casellaClick);*/
+      campo.push(blocco);
     }
+
     return campo;
   }
 
 
 //dichiarazione caselle
 function casellaClick(){
+    
+    console.log(dataset.numero)
 
-    if()
-    this.classList.toggle("")
 }
 
 
