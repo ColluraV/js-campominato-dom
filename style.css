@@ -10,9 +10,9 @@
     height: auto;
     display: flex;
     border: 1px black solid;
-    align-items: center;
+    width: 8px;
     justify-content: center;
-    width: 20px;
+    align-items: center;
 
 }
 

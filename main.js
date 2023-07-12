@@ -3,6 +3,7 @@
 
 const btnConferma = document.querySelector(".conferma");
 const fieldContainer = document.querySelector("[id=field-container]");
+let numEsplosivi=[];
 
 //selezione difficoltà
 btnConferma.addEventListener("click",function(){
@@ -24,8 +25,8 @@ btnConferma.addEventListener("click",function(){
 
     console.log(totblocchi);
 
-    randomNumber(totblocchi);
-
+    numEsplosivi = randomNumber(totblocchi);
+    
     fieldGen (totblocchi)
 
     
@@ -49,10 +50,11 @@ function blockGen (totBlocchi){
     div.classList.add("quadrato");
     div.style.flexBasis =`calc( 100% / ${blocchiPerRiga})`
     console.log(blocchiPerRiga);
-
- 
+    div.addEventListener("click", casellaClick);
     
     fieldContainer.append(div);
+
+    return div
 }
 
 
@@ -65,24 +67,39 @@ function fieldGen (numBlocchi) {
 
       const blocco = blockGen(numBlocchi);
 
-      blocco.dataset.numero = i.toString;
-      /*campo.addEventListener("click", casellaClick);*/
+      blocco.dataset.numero = i+1;
+
       campo.push(blocco);
     }
-
+  
     return campo;
   }
 
 
 //dichiarazione caselle
+
 function casellaClick(){
+    const scelta=( this.dataset.numero)
+
+        console.log(scelta)
     
-    console.log(dataset.numero)
+    for(let i= 1; i <= numEsplosivi.length;i++){
+ 
 
+        if(numEsplosivi[i] == scelta){
+            console.log("ouch")
+            console.log(numEsplosivi[i]);
+            this.classList.add("bg-danger");
+            this.innerHTML = `<i class="fa-solid fa-biohazard fs-1"></i>`
+            return
+        }
+        else{ 
+            console.log("bene");
+            this.classList.add("bg-success");
+            this.innerHTML = `<i class="fa-solid fa-dragon fs-2"></i>`;
+        }
+    }
 }
-
-
-
 
 
 
